@@ -21,6 +21,11 @@ For example, to install the stable version with the name "brave", use
 ```
 am -e https://github.com/ivan-hc/Brave-appimage brave stable
 ```
+or add the `--user` flag before the url to install it locally
+```
+am -e --user https://github.com/ivan-hc/Brave-appimage brave stable
+```
+
 Replace "`stable`" with "`beta`" or "`nightly`" depending on the build you want.
 
 Replace "`brave`" if you want to give the installed app an alternative name, for example "`brave-beta`", "`brave-nightly`", "`the-chromium-orange`" and so on.
