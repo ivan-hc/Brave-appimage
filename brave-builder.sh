@@ -18,7 +18,7 @@ Stable=$(curl -Ls https://api.github.com/repos/brave/brave-browser/releases/late
 Releases=$(curl -Ls https://api.github.com/repos/brave/brave-browser/releases?per_page=100 | sed 's/[()",{} ]/\n/g' | grep -oi "https.*download.*linux.*zip$" | grep -v "symbol")
 LIST=$(printf "%b\n%b\n" "$Stable" "$Releases" | grep . )
 [ -z "$LIST" ] && exit 0
-LAUNCHER=$(curl -Ls https://aur.archlinux.org/cgit/aur.git/plain/brave-browser.desktop?h=brave-bin | sed 's/^MimeType=x-scheme-handler/X-MimeType=x-scheme-handler/g')
+LAUNCHER=$(curl -Ls https://raw.githubusercontent.com/ivan-hc/Brave-appimage/main/brave.desktop)
 [ -z "$LAUNCHER" ] && exit 0
 
 _create_brave_appimage() {
