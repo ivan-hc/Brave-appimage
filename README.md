@@ -1,29 +1,45 @@
 # Brave-appimage
 Unofficial AppImages for Brave Web Browser x86_64/AMD64 and aarch64/ARM64
 
-## Reason
-It was missing from my collection of Chromium-based browsers... so I created this repository for consistency.
+## History
+I have created all the releases of the major Chromium-based browsers:
+- [Chromium](https://github.com/ivan-hc/Chromium-Web-Browser-appimage) Stable/Candidate/Beta/Edge
+- [Chrome](https://github.com/ivan-hc/Chrome-appimage) Stable/Beta/Unstable 	DEB, upstream 	
+- [Microsoft Edge](https://github.com/ivan-hc/MS-Edge-appimage) Stable/Beta/Dev 	DEB, upstream 	
+- [Opera](https://github.com/ivan-hc/Opera-appimage) Stable/Beta/Dev 	DEB, upstream 	
+- [Vivaldi](https://github.com/ivan-hc/Vivaldi-appimage) Stable/Snapshot 	DEB, upstream 	
+- [Yandex Browser](https://github.com/ivan-hc/Yandex-Browser-appimage) Stable/Beta/Corporate 	DEB, upstream 	
 
-This repository provides continuous builds.
+...but Brave was missing from my collection... so I created this repository for consistency.
 
-If you are looking for more releases (for x86_64), visit https://github.com/srevinsaju/Brave-AppImage
+I have always admired and respected the work done at https://github.com/srevinsaju/Brave-AppImage that provides daily builds every day, for many years. It is not and was not my intention to compete with him... so much so that in my "AM" package manager I have always given priority to his builds rather than publishing mine.
 
 Personally I'm not interested in taking away work from colleagues... I had my own method for building the AppImage and wanted to publish it.
 
-I hope you find it useful.
+Since March 23, 2025 I have decided to replace his scripts in the "AM" database using my builds (see https://github.com/ivan-hc/AM/commit/a4d4cc02f891bcc58ceb54ea204baa905ec229bb), but for three simple reasons:
+- The historical repository https://github.com/srevinsaju/Brave-AppImage is not actively maintained, to the point that the [v1.76.73](https://github.com/srevinsaju/Brave-AppImage/releases/tag/v1.76.73) stable release has not been fixed for 2 weeks and was empty, despite a pull request opened for the same amount of time (see https://github.com/srevinsaju/Brave-AppImage/pull/16 and https://github.com/srevinsaju/Brave-AppImage/issues/17 for more context). 
+- My repository contains only one release, in order to speed up the download of others that are not "nightly", which on the contrary fill the "releases" section in https://github.com/srevinsaju/Brave-AppImage every day. This has always caused a slowdown when trying to install (for example) the "beta" build which gets buried in hundreds of pages.
+- My repository also contains builds for aarch64/ARM64, so it is better to show only one reference repository instead of 3, to avoid confusion.
 
-## How to install using "AM"
-Since my colleagues have done a great job, as long as they maintain their build, it will remain in the "AM" database, you can install my build using the option `-e` or `extra`
+Coincidentally, just a few minutes after publishing my commit in "AM", the [v1.76.81](https://github.com/srevinsaju/Brave-AppImage/releases/tag/v1.76.81) stable release was created without any difficulties, probably because the workflow was solved... but that doesn't mean that the risk of being left without a release is still high, if there was no one to maintain its repository.
+
+In my workflows, all six releases (three for each architecture) are complementary: if one fails, the others are not produced. And usually this risk is due to the burial of some "beta" among hundreds of pages where "nightly" reigns supreme, in the upstream repository.
+
+On the other hand, I have made my own a battle that he started: to push the upstream developers to create an official one.
+
+I don't know if I will succeed in my intent... in the meantime I participated in the discussion too https://github.com/brave/brave-browser/issues/1060#issuecomment-2736231749, and I am waiting for an answer.
+
+If you want to use Brave releases from the repository https://github.com/srevinsaju/Brave-AppImage, you can still use the `-e` or `extra` option in "AM"
 ```
-am -e https://github.com/ivan-hc/Brave-appimage name channel
+am -e https://github.com/srevinsaju/Brave-AppImage name channel
 ```
 For example, to install the stable version with the name "brave", use
 ```
-am -e https://github.com/ivan-hc/Brave-appimage brave stable
+am -e https://github.com/srevinsaju/Brave-AppImage brave stable
 ```
 or add the `--user` flag before the url to install it locally
 ```
-am -e --user https://github.com/ivan-hc/Brave-appimage brave stable
+am -e --user https://github.com/srevinsaju/Brave-AppImage brave stable
 ```
 
 Replace "`stable`" with "`beta`" or "`nightly`" depending on the build you want.
@@ -31,6 +47,16 @@ Replace "`stable`" with "`beta`" or "`nightly`" depending on the build you want.
 Replace "`brave`" if you want to give the installed app an alternative name, for example "`brave-beta`", "`brave-nightly`", "`the-chromium-orange`" and so on.
 
 Learn more about the `-e` or `extra` usage at **https://github.com/ivan-hc/AM/blob/main/docs/guides-and-tutorials/extra.md**
+
+NOTE: since releases are buried in hundreds of pages dominated by nightly builds... you will probably need to make the following changes to the AM-updater script:
+- for Beta, replace `srevinsaju/Brave-AppImage/releases` with `srevinsaju/Brave-AppImage/releases?per_page=100` (to search among 100 pages in github APIs)
+- for Stable instead, replace `srevinsaju/Brave-AppImage/releases` with `srevinsaju/Brave-AppImage/releases/latest` (to search only the latest stable release)
+
+...you will have the advantage of being able to downgrade to older versions using the option `--rollback` or `downgrade`, if available.
+
+If you prefer, I could split the releases into different branches... but my goal is to convince upstream developers to take on this "burden", because **it is impossible that they have dozens and dozens of packages for each platform in each release, and the stupidest of all (AppImage) is not able to do it! It's ridiculous!**
+
+PS: I am not a user of Brave browser, or any Chromium-based browser... but I am an AppImage user and I want to support this packaging format. I do it for you. So help me put pressure on upstream and spread the word!
 
 ------------------------------------------------------------------------
 
