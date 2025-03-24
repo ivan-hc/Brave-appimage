@@ -42,7 +42,6 @@ jobs:
           uses: marvinpinto/action-automatic-releases@latest
           with:
             title: Continuous Stable
-            permissions: write-all
             automatic_release_tag: continuous-stable
             prerelease: false
             draft: false
@@ -54,7 +53,6 @@ jobs:
           uses: marvinpinto/action-automatic-releases@latest
           with:
             title: Continuous Beta
-            permissions: write-all
             automatic_release_tag: continuous-beta
             prerelease: true
             draft: false
@@ -66,7 +64,6 @@ jobs:
           uses: marvinpinto/action-automatic-releases@latest
           with:
             title: Continuous Nightly
-            permissions: write-all
             automatic_release_tag: continuous-nightly
             prerelease: true
             draft: false
