@@ -54,7 +54,7 @@ _create_brave_appimage() {
 	chmod a+x ./"$APP"-"$arch".AppDir/AppRun
 
 	ARCH="$arch" ./appimagetool --comp zstd --mksquashfs-opt -Xcompression-level --mksquashfs-opt 20 \
-		-u "gh-releases-zsync|$GITHUB_REPOSITORY_OWNER|Brave-appimage|continuous|*-$CHANNEL-*$arch.AppImage.zsync" \
+		-u "gh-releases-zsync|$GITHUB_REPOSITORY_OWNER|Brave-appimage|continuous-$CHANNEL|*-$CHANNEL-*$arch.AppImage.zsync" \
 		./"$APP"-"$arch".AppDir Brave-Web-Browser-"$CHANNEL"-"$VERSION"-"$arch".AppImage || exit 1
 }
 
