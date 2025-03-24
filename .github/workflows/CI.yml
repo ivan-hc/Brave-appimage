@@ -38,7 +38,7 @@ jobs:
           with:
             name: Brave-Web-Browser-x86_64.AppImage
 
-        - name: release
+        - name: release stable
           uses: marvinpinto/action-automatic-releases@latest
           with:
             title: Continuous Stable
@@ -50,7 +50,7 @@ jobs:
               *stable*.AppImage*
             repo_token: ${{ secrets.GITHUB_TOKEN }}
 
-        - name: release
+        - name: release beta
           uses: marvinpinto/action-automatic-releases@latest
           with:
             title: Continuous Beta
@@ -62,7 +62,7 @@ jobs:
               *beta*.AppImage*
             repo_token: ${{ secrets.GITHUB_TOKEN }}
 
-        - name: release
+        - name: release nightly
           uses: marvinpinto/action-automatic-releases@latest
           with:
             title: Continuous Nightly
