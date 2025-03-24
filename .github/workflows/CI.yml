@@ -41,10 +41,32 @@ jobs:
         - name: release
           uses: marvinpinto/action-automatic-releases@latest
           with:
-            title: Continuous build
-            automatic_release_tag: continuous
+            title: Continuous Stable
+            automatic_release_tag: continuous-stable
             prerelease: false
             draft: false
             files: |
-              *.AppImage*
+              *stable*.AppImage*
+            repo_token: ${{ secrets.GITHUB_TOKEN }}
+
+        - name: release
+          uses: marvinpinto/action-automatic-releases@latest
+          with:
+            title: Continuous Beta
+            automatic_release_tag: continuous-beta
+            prerelease: true
+            draft: false
+            files: |
+              *beta*.AppImage*
+            repo_token: ${{ secrets.GITHUB_TOKEN }}
+
+        - name: release
+          uses: marvinpinto/action-automatic-releases@latest
+          with:
+            title: Continuous Nightly
+            automatic_release_tag: continuous-nightly
+            prerelease: true
+            draft: false
+            files: |
+              *nightly*.AppImage*
             repo_token: ${{ secrets.GITHUB_TOKEN }}
