@@ -1,6 +1,6 @@
-https://github.com/ivan-hc/Brave-appimage/releases/download/continuous-stable/Brave-Web-Browser-stable-1.79.118-aarch64.AppImage
-https://github.com/ivan-hc/Brave-appimage/releases/download/continuous-stable/Brave-Web-Browser-stable-1.79.118-x86_64.AppImage
-https://github.com/ivan-hc/Brave-appimage/releases/download/continuous-nightly/Brave-Web-Browser-nightly-1.81.36-aarch64.AppImage
-https://github.com/ivan-hc/Brave-appimage/releases/download/continuous-nightly/Brave-Web-Browser-nightly-1.81.38-x86_64.AppImage
-https://github.com/ivan-hc/Brave-appimage/releases/download/continuous-beta/Brave-Web-Browser-beta-1.80.95-aarch64.AppImage
-https://github.com/ivan-hc/Brave-appimage/releases/download/continuous-beta/Brave-Web-Browser-beta-1.80.97-x86_64.AppImage
+https://github.com/ivan-hc/Brave-appimage/releases/download/continuous-stable/Brave-Web-Browser-stable-1.79.119-aarch64.AppImage
+https://github.com/ivan-hc/Brave-appimage/releases/download/continuous-stable/Brave-Web-Browser-stable-1.79.119-x86_64.AppImage
+https://github.com/ivan-hc/Brave-appimage/releases/download/continuous-nightly/Brave-Web-Browser-nightly-1.81.41-aarch64.AppImage
+https://github.com/ivan-hc/Brave-appimage/releases/download/continuous-nightly/Brave-Web-Browser-nightly-1.81.43-x86_64.AppImage
+https://github.com/ivan-hc/Brave-appimage/releases/download/continuous-beta/Brave-Web-Browser-beta-1.80.98-aarch64.AppImage
+https://github.com/ivan-hc/Brave-appimage/releases/download/continuous-beta/Brave-Web-Browser-beta-1.80.98-x86_64.AppImage
