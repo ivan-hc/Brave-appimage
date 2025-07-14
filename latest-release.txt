@@ -4,4 +4,4 @@ https://github.com/ivan-hc/Brave-appimage/releases/download/continuous-nightly/B
 https://github.com/ivan-hc/Brave-appimage/releases/download/continuous-nightly/Brave-Web-Browser-nightly-1.82.76-x86_64.AppImage
 https://github.com/ivan-hc/Brave-appimage/releases/download/continuous-beta/Brave-Web-Browser-beta-1.81.112-aarch64.AppImage
 https://github.com/ivan-hc/Brave-appimage/releases/download/continuous-beta/Brave-Web-Browser-beta-1.81.113-x86_64.AppImage
-Sun Jul 13 02:01:15 UTC 2025
+Mon Jul 14 01:56:25 UTC 2025
