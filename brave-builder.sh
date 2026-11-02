@@ -8,8 +8,14 @@ cd ./tmp || exit 1
 
 # DOWNLOAD APPIMAGETOOL
 if ! test -f ./appimagetool; then
-	wget -q https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage -O appimagetool || exit 1
+	wget -q https://github.com/pkgforge-dev/appimagetool/releases/latest/download/appimagetool-x86_64-linux -O appimagetool || exit 1
 	chmod a+x ./appimagetool
+fi
+
+# Pre-fetch host mkdwarfs because cross-packaging for aarch64 on x86_64 would otherwise fetch a foreign binary.
+if ! test -f ./mkdwarfs; then
+	wget -q https://github.com/mhx/dwarfs/releases/download/v0.15.6/dwarfs-universal-0.15.6-Linux-x86_64 -O mkdwarfs
+	chmod a+x ./mkdwarfs
 fi
 
 # CREATE BRAVE BROWSER APPIMAGES
@@ -40,6 +46,7 @@ _create_brave_appimage() {
 		sed -i "s/Name=Brave/Name=Brave ${CHANNEL^}/g; s/Class=brave-browser/Class=brave-browser-$CHANNEL/g" brave.desktop
 	fi
 	cp ./*128*.png brave.png
+	cp brave.png .DirIcon
 	sed -i "s#Icon=.*#Icon=$APP#g" brave.desktop
 	cd .. || exit 1
 
@@ -53,9 +60,10 @@ _create_brave_appimage() {
 	HEREDOC
 	chmod a+x ./"$APP"-"$arch".AppDir/AppRun
 
-	ARCH="$arch" ./appimagetool --comp zstd --mksquashfs-opt -Xcompression-level --mksquashfs-opt 20 \
+	APPIMAGE_ARCH="$arch" VERSION="$VERSION" ./appimagetool --mkdwarfs ./mkdwarfs \
 		-u "gh-releases-zsync|$GITHUB_REPOSITORY_OWNER|Brave-appimage|continuous-$CHANNEL|*-$CHANNEL-*$arch.AppImage.zsync" \
-		./"$APP"-"$arch".AppDir Brave-Web-Browser-"$CHANNEL"-"$VERSION"-"$arch".AppImage || exit 1
+		-n Brave-Web-Browser-"$CHANNEL"-"$VERSION"-"$arch".AppImage \
+		./"$APP"-"$arch".AppDir || exit 1
 }
 
 _create_brave_appimages() {
@@ -71,19 +79,19 @@ _create_brave_appimages() {
 }
 
 CHANNEL="stable"
-mkdir -p "$CHANNEL" && cp ./appimagetool ./"$CHANNEL"/appimagetool && cd "$CHANNEL" || exit 1
+mkdir -p "$CHANNEL" && cp ./appimagetool ./mkdwarfs ./"$CHANNEL"/ && cd "$CHANNEL" || exit 1
 _create_brave_appimages
 cd .. || exit 1
 mv ./"$CHANNEL"/*.AppImage* ./
 
 CHANNEL="beta"
-mkdir -p "$CHANNEL" && cp ./appimagetool ./"$CHANNEL"/appimagetool && cd "$CHANNEL" || exit 1
+mkdir -p "$CHANNEL" && cp ./appimagetool ./mkdwarfs ./"$CHANNEL"/ && cd "$CHANNEL" || exit 1
 _create_brave_appimages
 cd .. || exit 1
 mv ./"$CHANNEL"/*.AppImage* ./
 
 CHANNEL="nightly"
-mkdir -p "$CHANNEL" && cp ./appimagetool ./"$CHANNEL"/appimagetool && cd "$CHANNEL" || exit 1
+mkdir -p "$CHANNEL" && cp ./appimagetool ./mkdwarfs ./"$CHANNEL"/ && cd "$CHANNEL" || exit 1
 _create_brave_appimages
 cd .. || exit 1
 mv ./"$CHANNEL"/*.AppImage* ./
